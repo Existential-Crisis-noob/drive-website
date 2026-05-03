@@ -47,29 +47,29 @@ export default function Page() {
         <SiteHeader theme={theme} onToggleTheme={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))} />
 
         <AnimatedSection>
-          <section className="section-container py-20 md:py-28">
+          <section className="section-container pb-20 pt-24 md:pb-28 md:pt-32">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65 }}
-              className="mx-auto mt-4 max-w-4xl text-center text-4xl font-extrabold leading-tight md:text-6xl"
+              className="mx-auto max-w-4xl text-center text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl"
             >
               We Make Your Local Brand <span className="bg-gradient-to-r from-orange-500 to-amber-300 bg-clip-text text-transparent">Impossible to Ignore.</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="text-muted mx-auto mt-5 max-w-2xl text-center text-lg">
-              Websites, SEO, social media, and content support for local businesses that want to get found, trusted, and chosen.
+              DRIVE Digital helps local businesses get found, trusted, and chosen through websites, SEO, social media, and content.
             </motion.p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <a href="#snapshot" className="rounded-full bg-gradient-to-r from-orange-500 to-amber-400 px-6 py-3 font-semibold text-white transition hover:shadow-orange">
+              <a href="#snapshot" className="rounded-full bg-gradient-to-r from-orange-500 to-amber-400 px-5 py-2.5 text-sm font-semibold text-white transition hover:shadow-orange sm:px-6 sm:py-3">
                 Get Free Growth Snapshot
               </a>
-              <a href="#book" className="rounded-full border border-orange-300/50 px-6 py-3 font-semibold text-orange-300 transition hover:bg-orange-500/10">
+              <a href="#book" className="rounded-full border border-orange-300/50 px-5 py-2.5 text-sm font-semibold text-orange-300 transition hover:bg-orange-500/10 sm:px-6 sm:py-3">
                 Book a Strategy Call
               </a>
             </div>
             <div className="mx-auto mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
               {heroStats.map((item) => (
-                <div key={item} className="glass-card rounded-xl px-4 py-3 text-center text-sm font-medium">
+                <div key={item} className="glass-card rounded-xl px-3 py-2.5 text-center text-xs font-medium sm:text-sm">
                   {item}
                 </div>
               ))}
@@ -81,9 +81,9 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="services" className="section-container scroll-mt-24">
-            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Services That Move Your Business Forward.</h2>
+            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Services Built for Local Businesses</h2>
             <p className="text-muted mx-auto mt-3 max-w-3xl text-center">
-              We combine design, visibility, content, and strategy so your business can get found, trusted, and chosen.
+              Websites, search visibility, social media, and creative content designed to help people find you, trust you, and contact you.
             </p>
             <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {services.map((service, index) => {
@@ -101,13 +101,26 @@ export default function Page() {
                     <Icon className="h-6 w-6 text-orange-300" />
                     <h3 className="mt-4 text-xl font-semibold">{service.title}</h3>
                     <p className="text-muted mt-2 text-sm">{service.description}</p>
-                    <ul className="mt-4 flex flex-wrap gap-2 text-xs text-muted">
-                      {service.includes.slice(0, 4).map((item) => (
-                        <li key={item} className="rounded-full border border-white/15 px-2 py-1">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="mt-4 md:hidden">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-orange-300">What this includes</p>
+                      <ul className="flex flex-wrap gap-2 text-xs text-muted">
+                        {service.includes.slice(0, 4).map((item) => (
+                          <li key={item} className="rounded-full border border-white/15 px-2 py-1">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="mt-4 hidden max-h-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:max-h-40 group-hover:opacity-100 md:block">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-orange-300">What this includes</p>
+                      <ul className="flex flex-wrap gap-2 text-xs text-muted">
+                        {service.includes.slice(0, 4).map((item) => (
+                          <li key={item} className="rounded-full border border-white/15 px-2 py-1">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </motion.article>
                 );
               })}
@@ -208,17 +221,6 @@ export default function Page() {
         </AnimatedSection>
 
         <AnimatedSection>
-          <section className="section-container">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Client Stories</p>
-            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Client Stories</h2>
-            <div className="glass-card mx-auto mt-7 max-w-3xl rounded-2xl p-8 text-center">
-              <p className="text-lg font-semibold">Client stories are being added soon.</p>
-              <p className="text-muted mt-3">Real project walkthroughs and client videos will be added here as DRIVE Digital grows.</p>
-            </div>
-          </section>
-        </AnimatedSection>
-
-        <AnimatedSection>
           <section id="book" className="section-container scroll-mt-24">
             <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Ready to Build Your Growth System?</h2>
             <p className="text-muted mx-auto mt-3 max-w-3xl text-center">
@@ -231,13 +233,13 @@ export default function Page() {
               <div className="glass-card rounded-2xl p-6">
                 {!formSubmitted ? (
                   <form onSubmit={handleBookSubmit} className="grid gap-3 sm:grid-cols-2">
-                    <input required placeholder="Name" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-1" style={{ background: "var(--field-bg)" }} />
-                    <input required type="email" placeholder="Email" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-1" style={{ background: "var(--field-bg)" }} />
-                    <input required placeholder="Business Name" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
-                    <input placeholder="Website or social media username" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
-                    <input required placeholder="What do you need help with?" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
-                    <input required placeholder="Preferred meeting time" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
-                    <textarea required placeholder="Message" className="min-h-24 rounded-lg border border-white/15 px-3 py-2 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
+                    <input required placeholder="Name" className="h-11 rounded-lg border px-3 sm:col-span-1" style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }} />
+                    <input required type="email" placeholder="Email" className="h-11 rounded-lg border px-3 sm:col-span-1" style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }} />
+                    <input required placeholder="Business Name" className="h-11 rounded-lg border px-3 sm:col-span-2" style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }} />
+                    <input placeholder="Website or social media username" className="h-11 rounded-lg border px-3 sm:col-span-2" style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }} />
+                    <input required placeholder="What do you need help with?" className="h-11 rounded-lg border px-3 sm:col-span-2" style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }} />
+                    <input required placeholder="Preferred meeting time" className="h-11 rounded-lg border px-3 sm:col-span-2" style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }} />
+                    <textarea required placeholder="Message" className="min-h-24 rounded-lg border px-3 py-2 sm:col-span-2" style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }} />
                     <button className="h-11 rounded-lg bg-gradient-to-r from-orange-500 to-amber-400 font-semibold text-white sm:col-span-2">Request Strategy Call</button>
                   </form>
                 ) : (

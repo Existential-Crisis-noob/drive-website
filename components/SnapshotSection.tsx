@@ -97,8 +97,8 @@ export default function SnapshotSection() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={mode === "website" ? "Enter your website URL" : "Enter Instagram or social media handle"}
-              className="h-12 flex-1 rounded-xl border border-white/15 px-4 text-sm text-current outline-none ring-orange-400 transition focus:ring-2"
-              style={{ background: "var(--field-bg)" }}
+              className="h-12 flex-1 rounded-xl border px-4 text-sm text-current outline-none ring-orange-400 transition focus:ring-2"
+              style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }}
             />
             <button className="h-12 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 px-6 text-sm font-semibold text-white transition hover:shadow-orange">
               Get Free Growth Snapshot
@@ -147,8 +147,8 @@ export default function SnapshotSection() {
                     onChange={(event) => setEmail(event.target.value)}
                     type="email"
                     placeholder="Your email address"
-                    className="h-10 flex-1 rounded-lg border border-white/15 px-3 text-sm outline-none ring-orange-400 transition focus:ring-2"
-                    style={{ background: "var(--field-bg)" }}
+                    className="h-10 flex-1 rounded-lg border px-3 text-sm outline-none ring-orange-400 transition focus:ring-2"
+                    style={{ background: "var(--field-bg)", borderColor: "var(--card-border)" }}
                   />
                   <button className="h-10 rounded-lg bg-gradient-to-r from-orange-500 to-amber-400 px-4 text-sm font-semibold text-white">Request Manual Review</button>
                 </form>

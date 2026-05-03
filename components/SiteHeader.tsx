@@ -13,13 +13,13 @@ export default function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 backdrop-blur-xl" style={{ background: "var(--header-bg)" }}>
       <div className="section-container flex h-[74px] items-center justify-between gap-5">
-        <a href="#top" className="shrink-0 rounded-full px-3 py-1" style={theme === "light" ? { background: "rgba(15,23,42,0.08)" } : undefined}>
+        <a href="#top" className="shrink-0">
           <Image
             src="/drive-logo.png"
             alt="DRIVE Digital logo"
             width={168}
             height={56}
-            className="h-auto w-32 drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)] sm:w-40"
+            className="h-auto w-32 drop-shadow-[0_1px_4px_rgba(0,0,0,0.24)] sm:w-40"
             priority
           />
         </a>

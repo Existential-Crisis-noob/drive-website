@@ -22,33 +22,33 @@ export const heroStats = [
 export const services: ServiceItem[] = [
   {
     title: "Website Design",
-    description: "Websites and landing pages built to make your business look trustworthy and convert visitors.",
-    includes: ["Website design", "Landing pages", "Mobile-friendly design", "Conversion-focused layout"]
+    description: "Websites and landing pages that make your business look trustworthy and easy to contact.",
+    includes: ["Landing pages", "Mobile-friendly design", "Conversion layout", "Clear calls-to-action"]
   },
   {
     title: "SEO & Local Visibility",
-    description: "Help customers find you through search, Google visibility, and local discovery.",
-    includes: ["SEO", "Google visibility", "Local search", "Search optimization"]
+    description: "Help customers find your business through search and local discovery.",
+    includes: ["SEO basics", "Google visibility", "Local search", "Search-friendly website structure"]
   },
   {
     title: "Social Media Management",
-    description: "Content planning and posting support to keep your brand active and consistent.",
+    description: "Keep your brand active, consistent, and easy to remember.",
     includes: ["Content planning", "Posting support", "Brand consistency", "Social media presence"]
   },
   {
     title: "Creative Content",
-    description: "Graphics, thumbnails, videos, flyers, logos, and reels that help your brand stand out.",
+    description: "Design and video content that makes your business stand out online.",
     includes: ["Graphic design", "Flyers", "Logos", "Thumbnails", "Video editing", "Reels", "Marketing content"]
   },
   {
     title: "AI Visibility",
     description: "Structure your website and content so search engines and AI tools can understand your business better.",
-    includes: ["Content clarity", "Structured pages", "Entity-rich copy", "Discoverability improvements"]
+    includes: ["Content clarity", "Structured pages", "Better business information", "AI-search readiness"]
   },
   {
     title: "Strategy Plan",
     description: "We look at what your competitors are doing online and find gaps your business can use.",
-    includes: ["Competitor research", "Digital presence review", "Growth planning", "Content and visibility strategy"]
+    includes: ["Competitor research", "Digital audit", "Growth plan", "Content direction"]
   }
 ];
 
