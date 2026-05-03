@@ -18,7 +18,19 @@ export default function BackgroundGlow() {
     return () => window.removeEventListener("mousemove", move);
   }, [mouseX, mouseY]);
 
-  const background = useMotionTemplate`radial-gradient(600px circle at ${smoothX}px ${smoothY}px, rgba(255,122,0,0.16), rgba(255,122,0,0.03) 32%, transparent 60%)`;
+  const background = useMotionTemplate`radial-gradient(620px circle at ${smoothX}px ${smoothY}px, rgba(255,122,0,0.16), rgba(255,122,0,0.035) 34%, transparent 64%)`;
 
-  return <motion.div aria-hidden className="pointer-events-none fixed inset-0 z-0" style={{ background }} />;
+  return (
+    <>
+      <motion.div aria-hidden className="pointer-events-none fixed inset-0 z-0" style={{ background }} />
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 z-0 opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(120deg, transparent 0%, rgba(255,122,0,0.06) 18%, transparent 45%), linear-gradient(30deg, transparent 0%, rgba(255,122,0,0.04) 20%, transparent 42%)"
+        }}
+      />
+    </>
+  );
 }

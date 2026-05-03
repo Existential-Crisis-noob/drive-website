@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DRIVE | Digital Marketing Agency",
-  description: "Grow revenue through digital marketing with DRIVE."
+  title: "DRIVE Digital | Growth Studio for Local Businesses",
+  description: "DRIVE Digital helps local businesses in Canada get found, trusted, and chosen."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

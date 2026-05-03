@@ -3,7 +3,25 @@
 @tailwind utilities;
 
 :root {
+  --bg: #04050b;
+  --bg-soft: #0a1020;
+  --text: #f7f8fb;
+  --muted: rgba(240, 244, 255, 0.72);
+  --card: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.14);
+  --route: rgba(255, 140, 40, 0.22);
   color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f8f9fc;
+  --bg-soft: #ffffff;
+  --text: #111827;
+  --muted: rgba(31, 41, 55, 0.78);
+  --card: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(148, 163, 184, 0.35);
+  --route: rgba(255, 122, 0, 0.25);
+  color-scheme: light;
 }
 
 html {
@@ -11,7 +29,9 @@ html {
 }
 
 body {
-  @apply bg-[#04050b] text-white antialiased;
+  background: var(--bg);
+  color: var(--text);
+  @apply antialiased;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
@@ -20,5 +40,15 @@ body {
 }
 
 .glass-card {
-  @apply border border-white/10 bg-white/5 backdrop-blur-md;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  @apply backdrop-blur-md;
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.route-line {
+  stroke: var(--route);
 }
