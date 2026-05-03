@@ -9,7 +9,7 @@ export default function ClientsSection() {
   return (
     <AnimatedSection>
       <div className="section-container">
-        <h2 className="text-3xl font-bold md:text-4xl">Clients We&apos;ve Worked With</h2>
+        <h2 className="text-center text-3xl font-bold md:text-4xl">Clients We&apos;ve Worked With</h2>
         <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {clients.map((client, idx) => (
             <motion.div

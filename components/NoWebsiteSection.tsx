@@ -1,6 +1,10 @@
 import AnimatedSection from "./AnimatedSection";
 
-export default function NoWebsiteSection() {
+type NoWebsiteSectionProps = {
+  onBookClick: () => void;
+};
+
+export default function NoWebsiteSection({ onBookClick }: NoWebsiteSectionProps) {
   return (
     <AnimatedSection>
       <div className="section-container">
@@ -9,12 +13,13 @@ export default function NoWebsiteSection() {
           <p className="mx-auto mt-4 max-w-3xl text-white/75">
             We help you build your online presence from the ground up, so your business can reach the right audience and turn attention into customers.
           </p>
-          <a
-            href="#booking"
+          <button
+            type="button"
+            onClick={onBookClick}
             className="mt-7 inline-block rounded-full bg-gradient-to-r from-orange-500 to-amber-400 px-6 py-3 font-semibold text-white transition hover:shadow-orange"
           >
             Start Building Your Presence
-          </a>
+          </button>
         </div>
       </div>
     </AnimatedSection>

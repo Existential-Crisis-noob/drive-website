@@ -10,8 +10,8 @@ export default function TestimonialsSection() {
   return (
     <AnimatedSection>
       <div className="section-container">
-        <h2 className="text-3xl font-bold md:text-4xl">What Clients Say</h2>
-        <p className="mt-3 max-w-3xl text-white/70">
+        <h2 className="text-center text-3xl font-bold md:text-4xl">What Clients Say</h2>
+        <p className="mx-auto mt-3 max-w-3xl text-center text-white/70">
           Real stories from people and businesses we&apos;ve helped through design, content, and digital marketing.
         </p>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -21,7 +21,7 @@ export default function TestimonialsSection() {
               href={video.youtube}
               target="_blank"
               rel="noreferrer"
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -7, scale: 1.01 }}
               className="group overflow-hidden rounded-2xl border border-white/10 bg-black/30"
             >
               <div className="relative h-44">

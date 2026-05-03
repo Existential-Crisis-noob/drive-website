@@ -11,8 +11,8 @@ export default function ServicesSection() {
   return (
     <AnimatedSection>
       <div className="section-container">
-        <h2 className="text-3xl font-bold md:text-4xl">Our Services</h2>
-        <p className="mt-3 max-w-3xl text-white/70">
+        <h2 className="text-center text-3xl font-bold md:text-4xl">Our Services</h2>
+        <p className="mx-auto mt-3 max-w-3xl text-center text-white/70">
           Everything your business needs to look professional, get discovered, and convert attention into revenue.
         </p>
         <motion.div
@@ -28,7 +28,7 @@ export default function ServicesSection() {
               <motion.div
                 key={service.title}
                 variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }}
-                whileHover={{ y: -6, scale: 1.02 }}
+                whileHover={{ y: -8, scale: 1.025 }}
                 className="glass-card rounded-2xl p-6 transition hover:border-orange-400/40 hover:shadow-orange"
               >
                 <Icon className="h-6 w-6 text-orange-300" />

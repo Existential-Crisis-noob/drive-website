@@ -15,8 +15,8 @@ export default function BookingSection() {
   return (
     <AnimatedSection>
       <div id="booking" className="section-container scroll-mt-24">
-        <h2 className="text-3xl font-bold md:text-4xl">Ready to Grow?</h2>
-        <p className="mt-3 max-w-3xl text-white/70">
+        <h2 className="text-center text-3xl font-bold md:text-4xl">Ready to Grow?</h2>
+        <p className="mx-auto mt-3 max-w-3xl text-center text-white/70">
           Book a free strategy call and let&apos;s talk about how DRIVE can help your business reach the right audience.
         </p>
         <div className="mt-8 grid gap-6 lg:grid-cols-2">

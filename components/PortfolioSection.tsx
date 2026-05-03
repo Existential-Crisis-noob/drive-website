@@ -19,11 +19,11 @@ export default function PortfolioSection() {
   return (
     <AnimatedSection>
       <div className="section-container">
-        <h2 className="text-3xl font-bold md:text-4xl">Portfolio</h2>
-        <p className="mt-3 max-w-3xl text-white/70">
+        <h2 className="text-center text-3xl font-bold md:text-4xl">Portfolio</h2>
+        <p className="mx-auto mt-3 max-w-3xl text-center text-white/70">
           Selected work across websites, SEO, graphics, thumbnails, social media, and video editing.
         </p>
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
           {filters.map((filter) => (
             <button
               key={filter}
@@ -47,7 +47,7 @@ export default function PortfolioSection() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                whileHover={{ y: -4 }}
+                whileHover={{ y: -7, scale: 1.01 }}
                 className="group overflow-hidden rounded-2xl border border-white/10 bg-black/25"
               >
                 <div className="relative h-44 overflow-hidden">
