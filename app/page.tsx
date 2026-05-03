@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BarChart3, Clapperboard, Compass, MapPinned, PenTool, Search, Share2, Sparkles, WandSparkles } from "lucide-react";
+import { Clapperboard, Compass, PenTool, Search, Share2, Sparkles } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import BackgroundGlow from "@/components/BackgroundGlow";
@@ -35,7 +35,14 @@ export default function Page() {
   };
 
   return (
-    <main id="top" className="relative min-h-screen overflow-x-clip bg-[radial-gradient(ellipse_at_top,_#10182f_0%,_var(--bg)_42%)]">
+    <main
+      id="top"
+      className="relative min-h-screen overflow-x-clip"
+      style={{
+        background:
+          "radial-gradient(ellipse at top, color-mix(in srgb, var(--bg-soft) 78%, transparent) 0%, var(--bg) 46%)"
+      }}
+    >
       <BackgroundGlow />
       <JourneyOverlay />
       <div className="relative z-10 pb-24">
@@ -43,7 +50,7 @@ export default function Page() {
 
         <AnimatedSection>
           <section className="section-container py-20 md:py-28">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 01 - Start Your Growth Engine</p>
+            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 01 — Start Your Growth Engine</p>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -55,9 +62,6 @@ export default function Page() {
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="text-muted mx-auto mt-5 max-w-2xl text-center text-lg">
               Your customers are online. DRIVE helps them find you first.
             </motion.p>
-            <p className="text-muted mx-auto mt-5 max-w-3xl text-center">
-              DRIVE Digital helps local businesses build websites, improve visibility, and create content that turns attention into real customers.
-            </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <a href="#snapshot" className="rounded-full bg-gradient-to-r from-orange-500 to-amber-400 px-6 py-3 font-semibold text-white transition hover:shadow-orange">
                 Get Free Growth Snapshot
@@ -66,7 +70,7 @@ export default function Page() {
                 Book a Strategy Call
               </a>
             </div>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mx-auto mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
               {heroStats.map((item) => (
                 <div key={item} className="glass-card rounded-xl px-4 py-3 text-center text-sm font-medium">
                   {item}
@@ -80,11 +84,27 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="services" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 03 - Services Built for Local Businesses</p>
+            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 03 — Services Built for Local Businesses</p>
             <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Digital Services That Move Your Business Forward.</h2>
             <p className="text-muted mx-auto mt-3 max-w-3xl text-center">
               We combine design, visibility, content, and strategy so your business can get found, trusted, and chosen.
             </p>
+            <div className="relative mx-auto mt-5 hidden h-10 max-w-xl lg:block">
+              <svg aria-hidden className="absolute left-0 top-0 h-full w-full" viewBox="0 0 420 40">
+                <rect x="8" y="9" width="70" height="22" rx="5" fill="rgba(249,115,22,0.18)" stroke="rgba(251,146,60,0.85)" />
+                <text x="43" y="24" textAnchor="middle" fontSize="11" fill="#fb923c">
+                  SEO
+                </text>
+                <rect x="172" y="9" width="90" height="22" rx="5" fill="rgba(249,115,22,0.16)" stroke="rgba(251,146,60,0.8)" />
+                <text x="217" y="24" textAnchor="middle" fontSize="11" fill="#fb923c">
+                  Content
+                </text>
+                <rect x="334" y="9" width="78" height="22" rx="5" fill="rgba(249,115,22,0.16)" stroke="rgba(251,146,60,0.8)" />
+                <text x="373" y="24" textAnchor="middle" fontSize="11" fill="#fb923c">
+                  Leads
+                </text>
+              </svg>
+            </div>
             <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {services.map((service, index) => {
                 const Icon = icons[index];
@@ -96,12 +116,12 @@ export default function Page() {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ delay: index * 0.06 }}
                     whileHover={{ y: -8, rotate: index % 2 ? 0.6 : -0.6 }}
-                    className="glass-card rounded-2xl p-6 transition hover:border-orange-400/40 hover:shadow-orange"
+                    className="group glass-card rounded-2xl p-6 transition hover:border-orange-400/40 hover:shadow-orange"
                   >
                     <Icon className="h-6 w-6 text-orange-300" />
                     <h3 className="mt-4 text-xl font-semibold">{service.title}</h3>
                     <p className="text-muted mt-2 text-sm">{service.description}</p>
-                    <ul className="mt-4 space-y-1 text-sm text-muted">
+                    <ul className="mt-4 hidden space-y-1 text-sm text-muted group-hover:block">
                       {service.includes.slice(0, 4).map((item) => (
                         <li key={item}>- {item}</li>
                       ))}
@@ -115,7 +135,7 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="industries" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 04 - Industries We Help</p>
+            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 04 — Industries We Help</p>
             <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Built for Local Businesses That Need to Be Seen.</h2>
             <div className="relative mt-9 grid gap-5 md:grid-cols-2">
               <svg aria-hidden className="pointer-events-none absolute -left-2 -top-7 h-16 w-16 opacity-80" viewBox="0 0 80 80">
@@ -136,10 +156,12 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="strategy" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 05 - Strategy Route</p>
+            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 05 — Strategy Route</p>
             <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">We Don&apos;t Guess. We Map the Route.</h2>
             <div className="relative mx-auto mt-10 max-w-5xl">
-              <div className="absolute left-[20px] top-0 hidden h-full w-px bg-gradient-to-b from-orange-400/40 to-transparent md:block" />
+              <svg aria-hidden className="pointer-events-none absolute left-0 top-0 hidden h-full w-full md:block" viewBox="0 0 960 600" preserveAspectRatio="none">
+                <path d="M80 80 C290 120 260 240 460 280 C620 315 650 460 860 500" fill="none" stroke="rgba(251,146,60,0.25)" strokeWidth="3" strokeDasharray="12 10" />
+              </svg>
               <div className="space-y-5">
                 {routeSteps.map((step, index) => (
                   <motion.div
@@ -148,7 +170,7 @@ export default function Page() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.08 }}
-                    className="glass-card relative rounded-2xl p-6 md:ml-10"
+                    className={`glass-card relative rounded-2xl p-6 md:w-[78%] ${index % 2 === 0 ? "md:ml-8" : "md:ml-auto md:mr-8"}`}
                   >
                     <span className="absolute -left-2 top-7 hidden h-4 w-4 rounded-full border border-orange-200/60 bg-orange-500 md:block" />
                     <p className="text-sm font-semibold uppercase tracking-wide text-orange-300">Step {index + 1}</p>
@@ -163,7 +185,7 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="portfolio" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 06 - Portfolio Check-In</p>
+            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 06 — Portfolio Check-In</p>
             <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Selected Work From the Road.</h2>
             <p className="text-muted mx-auto mt-3 max-w-3xl text-center">
               We&apos;ve built and supported 100+ digital projects across websites, graphics, and content. Here are a few selected examples.
@@ -235,7 +257,7 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="book" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Final Stop - Book a Strategy Call</p>
+            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Final Stop — Book a Strategy Call</p>
             <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Ready to Build Your Growth System?</h2>
             <p className="text-muted mx-auto mt-3 max-w-3xl text-center">
               Tell us about your business and we&apos;ll start reviewing your digital presence before the call.
@@ -247,13 +269,13 @@ export default function Page() {
               <div className="glass-card rounded-2xl p-6">
                 {!formSubmitted ? (
                   <form onSubmit={handleBookSubmit} className="grid gap-3 sm:grid-cols-2">
-                    <input required placeholder="Name" className="h-11 rounded-lg border border-white/15 bg-black/20 px-3 sm:col-span-1" />
-                    <input required type="email" placeholder="Email" className="h-11 rounded-lg border border-white/15 bg-black/20 px-3 sm:col-span-1" />
-                    <input required placeholder="Business Name" className="h-11 rounded-lg border border-white/15 bg-black/20 px-3 sm:col-span-2" />
-                    <input placeholder="Website or social media username" className="h-11 rounded-lg border border-white/15 bg-black/20 px-3 sm:col-span-2" />
-                    <input required placeholder="What do you need help with?" className="h-11 rounded-lg border border-white/15 bg-black/20 px-3 sm:col-span-2" />
-                    <input required placeholder="Preferred meeting time" className="h-11 rounded-lg border border-white/15 bg-black/20 px-3 sm:col-span-2" />
-                    <textarea required placeholder="Message" className="min-h-24 rounded-lg border border-white/15 bg-black/20 px-3 py-2 sm:col-span-2" />
+                    <input required placeholder="Name" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-1" style={{ background: "var(--field-bg)" }} />
+                    <input required type="email" placeholder="Email" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-1" style={{ background: "var(--field-bg)" }} />
+                    <input required placeholder="Business Name" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
+                    <input placeholder="Website or social media username" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
+                    <input required placeholder="What do you need help with?" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
+                    <input required placeholder="Preferred meeting time" className="h-11 rounded-lg border border-white/15 px-3 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
+                    <textarea required placeholder="Message" className="min-h-24 rounded-lg border border-white/15 px-3 py-2 sm:col-span-2" style={{ background: "var(--field-bg)" }} />
                     <button className="h-11 rounded-lg bg-gradient-to-r from-orange-500 to-amber-400 font-semibold text-white sm:col-span-2">Request Strategy Call</button>
                   </form>
                 ) : (
@@ -263,6 +285,10 @@ export default function Page() {
                 )}
               </div>
               <div className="glass-card rounded-2xl p-6">
+                <svg aria-hidden className="mb-4 h-10 w-10" viewBox="0 0 40 40">
+                  <path d="M20 4C13.4 4 8 9.4 8 16C8 25 20 36 20 36C20 36 32 25 32 16C32 9.4 26.6 4 20 4Z" fill="rgba(249,115,22,0.24)" stroke="rgba(249,115,22,0.92)" />
+                  <circle cx="20" cy="16" r="4" fill="#fb923c" />
+                </svg>
                 <h3 className="text-xl font-semibold">Choose a Meeting Time</h3>
                 <p className="text-muted mt-2 text-sm">Google Calendar booking link coming soon.</p>
                 <a href="#" className="mt-4 inline-flex rounded-lg bg-gradient-to-r from-orange-500 to-amber-400 px-4 py-2 font-semibold text-white">

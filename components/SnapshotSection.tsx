@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 
 type SnapshotState = "idle" | "loading" | "result" | "emailSent";
+type InputMode = "website" | "social";
 
 const labels = [
   "SEO Visibility",
@@ -13,11 +14,19 @@ const labels = [
   "Conversion Readiness",
   "Competitor Gap"
 ];
+const loadingSteps = [
+  "Checking your online presence...",
+  "Reviewing local visibility...",
+  "Looking for competitor gaps...",
+  "Preparing your initial snapshot..."
+];
 
 export default function SnapshotSection() {
+  const [mode, setMode] = useState<InputMode>("website");
   const [query, setQuery] = useState("");
   const [email, setEmail] = useState("");
   const [state, setState] = useState<SnapshotState>("idle");
+  const [loadingStep, setLoadingStep] = useState(0);
 
   const scores = useMemo(
     () =>
@@ -28,11 +37,22 @@ export default function SnapshotSection() {
     []
   );
 
+  useEffect(() => {
+    if (state !== "loading") return;
+    const intervals = [0, 800, 1600, 2400];
+    const timers = intervals.map((ms, index) => window.setTimeout(() => setLoadingStep(index), ms));
+    const finalTimer = window.setTimeout(() => setState("result"), 3000);
+    return () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      window.clearTimeout(finalTimer);
+    };
+  }, [state]);
+
   const handleSnapshot = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!query.trim()) return;
+    setLoadingStep(0);
     setState("loading");
-    window.setTimeout(() => setState("result"), 1500);
   };
 
   const handleEmail = (event: FormEvent<HTMLFormElement>) => {
@@ -44,19 +64,46 @@ export default function SnapshotSection() {
   return (
     <AnimatedSection>
       <div id="snapshot" className="section-container scroll-mt-24">
-        <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 02 - Free Growth Snapshot</p>
+        <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 02 — Free Growth Snapshot</p>
         <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">See Where Your Business Could Grow Online.</h2>
         <p className="text-muted mx-auto mt-4 max-w-3xl text-center">
           Enter your website or social media username and get a quick preview of where your business may be losing visibility, trust, or customers.
         </p>
+        <div className="mx-auto mt-4 flex max-w-3xl justify-end">
+          <svg aria-hidden className="h-8 w-8" viewBox="0 0 40 40">
+            <circle cx="20" cy="20" r="8" fill="rgba(249,115,22,0.22)" stroke="rgba(251,146,60,0.9)" />
+            <circle cx="20" cy="20" r="2.8" fill="#fb923c" />
+          </svg>
+        </div>
 
         <form onSubmit={handleSnapshot} className="glass-card mx-auto mt-8 max-w-3xl rounded-2xl p-4 sm:p-6">
+          <div className="mb-4 inline-flex rounded-full border border-white/15 p-1">
+            <button
+              type="button"
+              onClick={() => setMode("website")}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+                mode === "website" ? "bg-orange-500/20 text-orange-300" : "text-muted"
+              }`}
+            >
+              Website
+            </button>
+            <button
+              type="button"
+              onClick={() => setMode("social")}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+                mode === "social" ? "bg-orange-500/20 text-orange-300" : "text-muted"
+              }`}
+            >
+              Instagram / Social
+            </button>
+          </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Enter website URL or Instagram/social handle"
-              className="h-12 flex-1 rounded-xl border border-white/15 bg-black/20 px-4 text-sm text-current outline-none ring-orange-400 transition focus:ring-2"
+              placeholder={mode === "website" ? "Enter your website URL" : "Enter Instagram or social media handle"}
+              className="h-12 flex-1 rounded-xl border border-white/15 px-4 text-sm text-current outline-none ring-orange-400 transition focus:ring-2"
+              style={{ background: "var(--field-bg)" }}
             />
             <button className="h-12 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 px-6 text-sm font-semibold text-white transition hover:shadow-orange">
               Get Free Growth Snapshot
@@ -65,8 +112,16 @@ export default function SnapshotSection() {
         </form>
 
         {state === "loading" && (
-          <div className="mx-auto mt-6 max-w-3xl rounded-xl border border-orange-300/30 bg-orange-500/10 p-4 text-center text-orange-200">
-            Analyzing your visibility route...
+          <div className="mx-auto mt-6 max-w-3xl rounded-xl border border-orange-300/30 bg-orange-500/10 p-5 text-center text-orange-200">
+            <p className="text-sm font-semibold uppercase tracking-wide">Running Snapshot</p>
+            <p className="mt-2 text-base">{loadingSteps[loadingStep]}</p>
+            <div className="mx-auto mt-4 h-1.5 w-full max-w-md rounded-full bg-white/20">
+              <motion.div
+                initial={{ width: "0%" }}
+                animate={{ width: `${((loadingStep + 1) / loadingSteps.length) * 100}%` }}
+                className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-300"
+              />
+            </div>
           </div>
         )}
 

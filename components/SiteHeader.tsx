@@ -12,12 +12,12 @@ type SiteHeaderProps = {
 
 export default function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/25 backdrop-blur-xl">
-      <div className="section-container flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 border-b border-white/10 backdrop-blur-xl" style={{ background: "var(--header-bg)" }}>
+      <div className="section-container flex h-[74px] items-center justify-between gap-5">
         <a href="#top" className="shrink-0">
-          <Image src="/drive-logo.png" alt="DRIVE Digital logo" width={150} height={50} className="h-auto w-28 sm:w-36" priority />
+          <Image src="/drive-logo.png" alt="DRIVE Digital logo" width={168} height={56} className="h-auto w-32 sm:w-40" priority />
         </a>
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-7 xl:flex">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} className="text-sm font-medium text-muted transition hover:text-orange-300">
               {link.label}
@@ -28,7 +28,8 @@ export default function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
           <button
             type="button"
             onClick={onToggleTheme}
-            className="rounded-full border border-white/15 bg-white/5 p-2 text-muted transition hover:border-orange-300/60 hover:text-orange-300"
+            className="rounded-full border border-white/20 p-2 text-muted transition hover:border-orange-300/60 hover:text-orange-300"
+            style={{ background: "var(--field-bg)" }}
             aria-label="Toggle color mode"
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}

@@ -16,36 +16,33 @@ export const navLinks = [
 export const heroStats = [
   "100+ Digital Projects",
   "Local Business Focused",
-  "Websites • SEO • Social • Content",
   "Canada-Based Growth Support"
 ];
 
 export const services: ServiceItem[] = [
   {
     title: "Website Design",
-    description:
-      "Conversion-focused websites, landing pages, and mobile-friendly designs built to make your business look professional and trustworthy.",
+    description: "Websites and landing pages built to make your business look trustworthy and convert visitors.",
     includes: ["Website design", "Landing pages", "Mobile-friendly design", "Conversion-focused layout"]
   },
   {
     title: "SEO & Local Visibility",
-    description: "Help customers find your business on search engines and improve your local online visibility.",
+    description: "Help customers find you through search, Google visibility, and local discovery.",
     includes: ["SEO", "Google visibility", "Local search", "Search optimization"]
   },
   {
     title: "Social Media Management",
-    description: "Keep your brand visible, active, and consistent with content planning and social media support.",
+    description: "Content planning and posting support to keep your brand active and consistent.",
     includes: ["Content planning", "Posting support", "Brand consistency", "Social media presence"]
   },
   {
     title: "Creative Content",
-    description: "Visuals and videos designed to grab attention and help your brand look professional online.",
+    description: "Graphics, thumbnails, videos, flyers, logos, and reels that help your brand stand out.",
     includes: ["Graphic design", "Flyers", "Logos", "Thumbnails", "Video editing", "Reels", "Marketing content"]
   },
   {
     title: "AI Visibility",
-    description:
-      "Make your website and content easier for search engines and AI tools like ChatGPT, Gemini, and Perplexity to understand.",
+    description: "Structure your website and content so search engines and AI tools can understand your business better.",
     includes: ["Content clarity", "Structured pages", "Entity-rich copy", "Discoverability improvements"]
   },
   {

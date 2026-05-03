@@ -3,24 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --bg: #04050b;
-  --bg-soft: #0a1020;
-  --text: #f7f8fb;
-  --muted: rgba(240, 244, 255, 0.72);
-  --card: rgba(255, 255, 255, 0.05);
-  --card-border: rgba(255, 255, 255, 0.14);
-  --route: rgba(255, 140, 40, 0.22);
+  --bg: #060912;
+  --bg-soft: #111827;
+  --text: #f8fafc;
+  --muted: rgba(226, 232, 240, 0.78);
+  --card: rgba(15, 23, 42, 0.62);
+  --card-border: rgba(148, 163, 184, 0.22);
+  --route: rgba(251, 146, 60, 0.28);
+  --header-bg: rgba(3, 7, 18, 0.55);
+  --field-bg: rgba(2, 6, 23, 0.4);
+  --glow-core: rgba(255, 122, 0, 0.14);
+  --glow-soft: rgba(255, 122, 0, 0.03);
   color-scheme: dark;
 }
 
 [data-theme="light"] {
-  --bg: #f8f9fc;
+  --bg: #f7f8fb;
   --bg-soft: #ffffff;
-  --text: #111827;
-  --muted: rgba(31, 41, 55, 0.78);
-  --card: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(148, 163, 184, 0.35);
-  --route: rgba(255, 122, 0, 0.25);
+  --text: #0f172a;
+  --muted: rgba(30, 41, 59, 0.82);
+  --card: rgba(255, 255, 255, 0.96);
+  --card-border: rgba(148, 163, 184, 0.4);
+  --route: rgba(249, 115, 22, 0.28);
+  --header-bg: rgba(255, 255, 255, 0.84);
+  --field-bg: rgba(248, 250, 252, 0.95);
+  --glow-core: rgba(251, 146, 60, 0.09);
+  --glow-soft: rgba(251, 146, 60, 0.015);
   color-scheme: light;
 }
 
