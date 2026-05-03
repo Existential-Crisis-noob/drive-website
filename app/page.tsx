@@ -5,7 +5,6 @@ import { Clapperboard, Compass, PenTool, Search, Share2, Sparkles } from "lucide
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import BackgroundGlow from "@/components/BackgroundGlow";
-import JourneyOverlay from "@/components/JourneyOverlay";
 import SiteHeader from "@/components/SiteHeader";
 import SnapshotSection from "@/components/SnapshotSection";
 import StickyStrategyCTA from "@/components/StickyStrategyCTA";
@@ -44,13 +43,11 @@ export default function Page() {
       }}
     >
       <BackgroundGlow />
-      <JourneyOverlay />
       <div className="relative z-10 pb-24">
         <SiteHeader theme={theme} onToggleTheme={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))} />
 
         <AnimatedSection>
           <section className="section-container py-20 md:py-28">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 01 — Start Your Growth Engine</p>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,7 +57,7 @@ export default function Page() {
               We Make Your Local Brand <span className="bg-gradient-to-r from-orange-500 to-amber-300 bg-clip-text text-transparent">Impossible to Ignore.</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="text-muted mx-auto mt-5 max-w-2xl text-center text-lg">
-              Your customers are online. DRIVE helps them find you first.
+              Websites, SEO, social media, and content support for local businesses that want to get found, trusted, and chosen.
             </motion.p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <a href="#snapshot" className="rounded-full bg-gradient-to-r from-orange-500 to-amber-400 px-6 py-3 font-semibold text-white transition hover:shadow-orange">
@@ -84,27 +81,10 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="services" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 03 — Services Built for Local Businesses</p>
-            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Digital Services That Move Your Business Forward.</h2>
+            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Services That Move Your Business Forward.</h2>
             <p className="text-muted mx-auto mt-3 max-w-3xl text-center">
               We combine design, visibility, content, and strategy so your business can get found, trusted, and chosen.
             </p>
-            <div className="relative mx-auto mt-5 hidden h-10 max-w-xl lg:block">
-              <svg aria-hidden className="absolute left-0 top-0 h-full w-full" viewBox="0 0 420 40">
-                <rect x="8" y="9" width="70" height="22" rx="5" fill="rgba(249,115,22,0.18)" stroke="rgba(251,146,60,0.85)" />
-                <text x="43" y="24" textAnchor="middle" fontSize="11" fill="#fb923c">
-                  SEO
-                </text>
-                <rect x="172" y="9" width="90" height="22" rx="5" fill="rgba(249,115,22,0.16)" stroke="rgba(251,146,60,0.8)" />
-                <text x="217" y="24" textAnchor="middle" fontSize="11" fill="#fb923c">
-                  Content
-                </text>
-                <rect x="334" y="9" width="78" height="22" rx="5" fill="rgba(249,115,22,0.16)" stroke="rgba(251,146,60,0.8)" />
-                <text x="373" y="24" textAnchor="middle" fontSize="11" fill="#fb923c">
-                  Leads
-                </text>
-              </svg>
-            </div>
             <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {services.map((service, index) => {
                 const Icon = icons[index];
@@ -121,9 +101,11 @@ export default function Page() {
                     <Icon className="h-6 w-6 text-orange-300" />
                     <h3 className="mt-4 text-xl font-semibold">{service.title}</h3>
                     <p className="text-muted mt-2 text-sm">{service.description}</p>
-                    <ul className="mt-4 hidden space-y-1 text-sm text-muted group-hover:block">
+                    <ul className="mt-4 flex flex-wrap gap-2 text-xs text-muted">
                       {service.includes.slice(0, 4).map((item) => (
-                        <li key={item}>- {item}</li>
+                        <li key={item} className="rounded-full border border-white/15 px-2 py-1">
+                          {item}
+                        </li>
                       ))}
                     </ul>
                   </motion.article>
@@ -135,15 +117,8 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="industries" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 04 — Industries We Help</p>
-            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Built for Local Businesses That Need to Be Seen.</h2>
+            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Industries We Help</h2>
             <div className="relative mt-9 grid gap-5 md:grid-cols-2">
-              <svg aria-hidden className="pointer-events-none absolute -left-2 -top-7 h-16 w-16 opacity-80" viewBox="0 0 80 80">
-                <rect x="22" y="14" width="36" height="24" rx="4" fill="rgba(249,115,22,0.25)" stroke="rgba(251,146,60,0.9)" />
-                <text x="40" y="30" textAnchor="middle" fontSize="9" fill="#fb923c">
-                  SEO
-                </text>
-              </svg>
               {industries.map((item) => (
                 <motion.article key={item.title} whileHover={{ y: -6 }} className="glass-card rounded-2xl p-6">
                   <h3 className="text-xl font-semibold">{item.title}</h3>
@@ -156,12 +131,8 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="strategy" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 05 — Strategy Route</p>
-            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">We Don&apos;t Guess. We Map the Route.</h2>
+            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">How We Work</h2>
             <div className="relative mx-auto mt-10 max-w-5xl">
-              <svg aria-hidden className="pointer-events-none absolute left-0 top-0 hidden h-full w-full md:block" viewBox="0 0 960 600" preserveAspectRatio="none">
-                <path d="M80 80 C290 120 260 240 460 280 C620 315 650 460 860 500" fill="none" stroke="rgba(251,146,60,0.25)" strokeWidth="3" strokeDasharray="12 10" />
-              </svg>
               <div className="space-y-5">
                 {routeSteps.map((step, index) => (
                   <motion.div
@@ -185,8 +156,7 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="portfolio" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 06 — Portfolio Check-In</p>
-            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Selected Work From the Road.</h2>
+            <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Selected Work</h2>
             <p className="text-muted mx-auto mt-3 max-w-3xl text-center">
               We&apos;ve built and supported 100+ digital projects across websites, graphics, and content. Here are a few selected examples.
             </p>
@@ -206,13 +176,6 @@ export default function Page() {
               ))}
             </div>
             <div className="relative mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <svg aria-hidden className="pointer-events-none absolute -bottom-8 left-1/2 hidden h-16 w-32 -translate-x-1/2 lg:block" viewBox="0 0 160 80">
-                <circle cx="54" cy="58" r="6" fill="rgba(251,146,60,0.85)" />
-                <rect x="50" y="36" width="8" height="16" rx="3" fill="rgba(251,146,60,0.85)" />
-                <circle cx="98" cy="58" r="6" fill="rgba(251,146,60,0.85)" />
-                <rect x="94" y="34" width="8" height="18" rx="3" fill="rgba(251,146,60,0.85)" />
-                <rect x="62" y="28" width="20" height="3" rx="1.5" fill="rgba(251,146,60,0.85)" />
-              </svg>
               {filteredPortfolio.map((item) => (
                 <motion.article
                   key={item.project}
@@ -257,7 +220,6 @@ export default function Page() {
 
         <AnimatedSection>
           <section id="book" className="section-container scroll-mt-24">
-            <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Final Stop — Book a Strategy Call</p>
             <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">Ready to Build Your Growth System?</h2>
             <p className="text-muted mx-auto mt-3 max-w-3xl text-center">
               Tell us about your business and we&apos;ll start reviewing your digital presence before the call.
@@ -285,10 +247,6 @@ export default function Page() {
                 )}
               </div>
               <div className="glass-card rounded-2xl p-6">
-                <svg aria-hidden className="mb-4 h-10 w-10" viewBox="0 0 40 40">
-                  <path d="M20 4C13.4 4 8 9.4 8 16C8 25 20 36 20 36C20 36 32 25 32 16C32 9.4 26.6 4 20 4Z" fill="rgba(249,115,22,0.24)" stroke="rgba(249,115,22,0.92)" />
-                  <circle cx="20" cy="16" r="4" fill="#fb923c" />
-                </svg>
                 <h3 className="text-xl font-semibold">Choose a Meeting Time</h3>
                 <p className="text-muted mt-2 text-sm">Google Calendar booking link coming soon.</p>
                 <a href="#" className="mt-4 inline-flex rounded-lg bg-gradient-to-r from-orange-500 to-amber-400 px-4 py-2 font-semibold text-white">

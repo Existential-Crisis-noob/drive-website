@@ -7,13 +7,8 @@ import AnimatedSection from "./AnimatedSection";
 type SnapshotState = "idle" | "loading" | "result" | "emailSent";
 type InputMode = "website" | "social";
 
-const labels = [
-  "SEO Visibility",
-  "Social Media Presence",
-  "Local Search Presence",
-  "Conversion Readiness",
-  "Competitor Gap"
-];
+const websiteLabels = ["SEO Visibility", "Website Trust", "Local Search Presence", "Conversion Readiness", "Competitor Gap"];
+const socialLabels = ["Profile Clarity", "Content Consistency", "Local Discovery", "Engagement Readiness", "Competitor Gap"];
 const loadingSteps = [
   "Checking your online presence...",
   "Reviewing local visibility...",
@@ -30,11 +25,11 @@ export default function SnapshotSection() {
 
   const scores = useMemo(
     () =>
-      labels.map((label, index) => ({
+      (mode === "website" ? websiteLabels : socialLabels).map((label, index) => ({
         label,
-        score: [58, 52, 61, 47, 63][index]
+        score: mode === "website" ? [58, 63, 61, 47, 63][index] : [66, 54, 58, 49, 61][index]
       })),
-    []
+    [mode]
   );
 
   useEffect(() => {
@@ -47,6 +42,13 @@ export default function SnapshotSection() {
       window.clearTimeout(finalTimer);
     };
   }, [state]);
+
+  useEffect(() => {
+    setState("idle");
+    setQuery("");
+    setEmail("");
+    setLoadingStep(0);
+  }, [mode]);
 
   const handleSnapshot = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,18 +66,11 @@ export default function SnapshotSection() {
   return (
     <AnimatedSection>
       <div id="snapshot" className="section-container scroll-mt-24">
-        <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Stop 02 — Free Growth Snapshot</p>
+        <p className="text-center text-sm font-semibold uppercase tracking-wide text-orange-300">Free Growth Snapshot</p>
         <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">See Where Your Business Could Grow Online.</h2>
         <p className="text-muted mx-auto mt-4 max-w-3xl text-center">
           Enter your website or social media username and get a quick preview of where your business may be losing visibility, trust, or customers.
         </p>
-        <div className="mx-auto mt-4 flex max-w-3xl justify-end">
-          <svg aria-hidden className="h-8 w-8" viewBox="0 0 40 40">
-            <circle cx="20" cy="20" r="8" fill="rgba(249,115,22,0.22)" stroke="rgba(251,146,60,0.9)" />
-            <circle cx="20" cy="20" r="2.8" fill="#fb923c" />
-          </svg>
-        </div>
-
         <form onSubmit={handleSnapshot} className="glass-card mx-auto mt-8 max-w-3xl rounded-2xl p-4 sm:p-6">
           <div className="mb-4 inline-flex rounded-full border border-white/15 p-1">
             <button
@@ -126,10 +121,10 @@ export default function SnapshotSection() {
         )}
 
         {(state === "result" || state === "emailSent") && (
-          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} className="glass-card mx-auto mt-6 max-w-3xl rounded-2xl p-6">
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} className="glass-card mx-auto mt-6 max-w-3xl rounded-2xl p-5">
             <h3 className="text-xl font-semibold">Your Initial Growth Snapshot</h3>
             <p className="text-muted mt-2 text-sm">This is a quick preview. We&apos;ll manually review your business before the strategy call.</p>
-            <div className="mt-5 space-y-3">
+            <div className="mt-4 grid gap-3 md:grid-cols-2">
               {scores.map((item) => (
                 <div key={item.label}>
                   <div className="mb-1 flex items-center justify-between text-sm">
@@ -152,7 +147,8 @@ export default function SnapshotSection() {
                     onChange={(event) => setEmail(event.target.value)}
                     type="email"
                     placeholder="Your email address"
-                    className="h-10 flex-1 rounded-lg border border-white/15 bg-black/20 px-3 text-sm outline-none ring-orange-400 transition focus:ring-2"
+                    className="h-10 flex-1 rounded-lg border border-white/15 px-3 text-sm outline-none ring-orange-400 transition focus:ring-2"
+                    style={{ background: "var(--field-bg)" }}
                   />
                   <button className="h-10 rounded-lg bg-gradient-to-r from-orange-500 to-amber-400 px-4 text-sm font-semibold text-white">Request Manual Review</button>
                 </form>
